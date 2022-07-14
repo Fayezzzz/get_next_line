@@ -6,7 +6,7 @@
 /*   By: mkhairul <mkhairul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 20:28:27 by mkhairul          #+#    #+#             */
-/*   Updated: 2022/07/07 21:47:38 by mkhairul         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:29:45 by mkhairul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char const s1, char const s2);
+char	*gnl_cutjoin(int fd, char *storage);
+char	*ft_strjoin(const void *s1, const void *s2);
 char	*ft_strchr(const char *str, int c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 
-size_t	ft_strlen(const char *str);
+int		ft_count(char *str);
+int		ft_strlen(const void *str);
 
 #endif

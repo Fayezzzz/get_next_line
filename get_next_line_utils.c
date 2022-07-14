@@ -6,40 +6,46 @@
 /*   By: mkhairul <mkhairul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 20:28:04 by mkhairul          #+#    #+#             */
-/*   Updated: 2022/07/07 18:14:41 by mkhairul         ###   ########.fr       */
+/*   Updated: 2022/07/14 14:57:48 by mkhairul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const void *str)
 {
-	int i;
-	
+	int		i;
+	char	*s;
+
 	i = 0;
-	while (str[i] != '\0')
+	s = (char *)str;
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }
 
-char	*ft_strjoin(char const s1, char const s2)
+char	*ft_strjoin(const void *s1, const void *s2)
 {
 	size_t	i;
 	size_t	j;
 	char	*str;
+	char	*str1;
+	char	*str2;
 
 	i = 0;
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	str = (char *)malloc(siezof(*s1) * (ft_strlen(s1) * ft_strlen(s2) + 1));
+	str1 = (char *)s1;
+	str2 = (char *)s2;
+	str = (char *)malloc(sizeof(*s1) * (ft_strlen(str1) + ft_strlen(str2) + 1));
 	if (!str)
 		return (NULL);
-	while (s1[i])
-		str[j++] = s1[i++];
+	while (str1[i])
+		str[j++] = str1[i++];
 	i = 0;
-	while (s2[i])
-		str[j++] = s2[i++];
+	while (str2[i])
+		str[j++] = str2[i++];
 	str[j] = 0;
 	return (str);
 }
@@ -57,7 +63,7 @@ char	*ft_strchr(const char *str, int c)
 	return ((char *)str);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char			*str;
 	unsigned int	lens;
